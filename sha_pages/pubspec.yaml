@@ -1,0 +1,23 @@
+name: sha_pages
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sha_dependencias:
+    path: '../sha_dependencias'
+  sha_compartilhados:
+    path: '../sha_compartilhados'
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
