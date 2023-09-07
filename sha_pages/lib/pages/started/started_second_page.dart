@@ -1,11 +1,10 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
+import 'package:sha_compartilhados/componentes/botoes/buttom_started_widget.dart';
 
 class StartedSecondPage extends StatefulWidget {
-  const StartedSecondPage({super.key});
+  const StartedSecondPage({Key? key}) : super(key: key);
 
   @override
   _StartedSecondPageState createState() => _StartedSecondPageState();
@@ -23,20 +22,35 @@ class _StartedSecondPageState extends State<StartedSecondPage> {
     return Scaffold(
       backgroundColor: Cores.corPrincipal,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'S.H.A',
-            style: Fontes.getMontserrat(fontSize: 40, cor: Cores.corTextoBranco),
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 30.0),
+              child: Text(
+                'S.H.A',
+                style: Fontes.getMontserrat(fontSize: 40, cor: Cores.corTextoBranco),
+              ),
+            ),
           ),
           const SizedBox(height: 20.0),
+          const Spacer(),
           Text(
             'Para Auxiliar no dia a dia',
-            style: Fontes.getMontserrat(fontSize: 24, cor: Cores.corTextoRoxo),
+            style: Fontes.getMontserrat(fontSize: 25, cor: Cores.corTextoRoxo),
+            textAlign: TextAlign.center,
           ),
+          const Padding(padding: EdgeInsets.only(top: 10)),
           Text(
             'Para te ajudar com as suas tarefas diárias e\nmelhorar na sua organização e controle de\ntarefas',
             style: Fontes.getMontserrat(fontSize: 14, cor: Cores.corTextoBranco),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 20.0),
+          ButtomStarted( 
+            text: 'Vamos Lá',
+            onPressed: () {
+            },
           ),
         ],
       ),

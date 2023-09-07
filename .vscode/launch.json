@@ -1,0 +1,88 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "sha",
+            "cwd": "sha",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sha (profile mode)",
+            "cwd": "sha",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sha (release mode)",
+            "cwd": "sha",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "sha_compartilhados",
+            "cwd": "sha_compartilhados",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sha_compartilhados (profile mode)",
+            "cwd": "sha_compartilhados",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sha_compartilhados (release mode)",
+            "cwd": "sha_compartilhados",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "sha_dependencias",
+            "cwd": "sha_dependencias",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sha_dependencias (profile mode)",
+            "cwd": "sha_dependencias",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sha_dependencias (release mode)",
+            "cwd": "sha_dependencias",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "sha_pages",
+            "cwd": "sha_pages",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sha_pages (profile mode)",
+            "cwd": "sha_pages",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sha_pages (release mode)",
+            "cwd": "sha_pages",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
