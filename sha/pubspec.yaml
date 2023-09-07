@@ -13,6 +13,8 @@ dependencies:
     path: '../sha_dependencias'
   sha_compartilhados:
     path: '../sha_compartilhados'
+  sha_pages:
+    path: '../sha_pages'
 
 dev_dependencies:
   flutter_test:

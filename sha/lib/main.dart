@@ -1,20 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sha_pages/pages/started/started_first_page.dart%20';
 
 void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
-}
+  runApp(const MaterialApp(
+    home: StartedFirstPage()));}
