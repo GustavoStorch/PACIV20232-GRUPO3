@@ -57,6 +57,16 @@ class _RegisterLoginPageState extends State<RegisterLoginPage> {
             onPressed: () {
             },
           ),
+          GestureDetector(
+            onTap: () => {}, // Chama a função de navegação ao ser pressionado
+            child: Padding(
+              padding: const EdgeInsets.only(top: 14.0),
+              child: Text(
+                'Log in',
+                style: Fontes.getMontserrat(cor: Cores.corTextoBranco),
+              ),
+            ),
+          ),
         ],
       ),
     );

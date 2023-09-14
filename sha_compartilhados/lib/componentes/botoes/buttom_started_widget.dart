@@ -13,7 +13,7 @@ class ButtomStarted extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 348.0,
-      height: 72.0,
+      height: 55.0,
       margin: const EdgeInsets.only(),
       child: ElevatedButton(
         onPressed: onPressed,
