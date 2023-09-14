@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
 import 'package:sha_compartilhados/componentes/botoes/buttom_started_widget.dart';
+import 'register_login_page.dart';
 
 class StartedSecondPage extends StatefulWidget {
   const StartedSecondPage({Key? key}) : super(key: key);
@@ -49,7 +50,11 @@ class _StartedSecondPageState extends State<StartedSecondPage> {
           const SizedBox(height: 20.0),
           ButtomStarted( 
             text: 'Vamos Lá',
+            corFundo: Cores.corBotaoRoxo,
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RegisterLoginPage()),);
             },
           ),
         ],
