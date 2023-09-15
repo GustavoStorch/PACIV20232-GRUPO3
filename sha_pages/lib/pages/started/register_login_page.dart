@@ -12,7 +12,6 @@ class RegisterLoginPage extends StatefulWidget {
 }
 
 class _RegisterLoginPageState extends State<RegisterLoginPage> {
-  
   @override
   void initState() {
     super.initState();
@@ -31,42 +30,47 @@ class _RegisterLoginPageState extends State<RegisterLoginPage> {
               padding: const EdgeInsets.only(top: 30.0),
               child: Text(
                 'S. Smart\nH. Home\nA. Assistent',
-                style: Fontes.getMontserrat(fontSize: 40, cor: Cores.corTextoBranco),
+                style: Fontes.getMontserrat(
+                    fontSize: 40, cor: Cores.corTextoBranco),
               ),
             ),
           ),
           const Spacer(),
           const SizedBox(height: 20.0),
-          ButtomStarted( 
-            text: 'Registrar',
+          ButtomStarted(
+            text: 'Log in',
             corFundo: Cores.corBotaoRoxo,
-            onPressed: () {
-            },
+            onPressed: () {},
           ),
           const SizedBox(height: 20.0),
-          ButtomWidget( 
+          ButtomWidget(
+            text: 'Continue with phone number',
+            corFundo: Cores.corTextPreto,
+            onPressed: () {},
+          ),
+          const SizedBox(height: 20.0),
+          ButtomWidget(
             text: 'Continue with Google',
             corFundo: Cores.corTextPreto,
-            onPressed: () {
-            },
+            onPressed: () {},
           ),
           const SizedBox(height: 20.0),
-          ButtomWidget( 
+          ButtomWidget(
             text: 'Continue with Facebook',
             corFundo: Cores.corTextPreto,
-            onPressed: () {
-            },
+            onPressed: () {},
           ),
           GestureDetector(
             onTap: () => {}, // Chama a função de navegação ao ser pressionado
             child: Padding(
               padding: const EdgeInsets.only(top: 14.0),
               child: Text(
-                'Log in',
+                'Register',
                 style: Fontes.getMontserrat(cor: Cores.corTextoBranco),
               ),
             ),
           ),
+          const Padding(padding: EdgeInsets.only(top: 24.0)),
         ],
       ),
     );

@@ -12,7 +12,6 @@ class StartedSecondPage extends StatefulWidget {
 }
 
 class _StartedSecondPageState extends State<StartedSecondPage> {
-  
   @override
   void initState() {
     super.initState();
@@ -30,7 +29,8 @@ class _StartedSecondPageState extends State<StartedSecondPage> {
               padding: const EdgeInsets.only(top: 30.0),
               child: Text(
                 'S.H.A',
-                style: Fontes.getMontserrat(fontSize: 40, cor: Cores.corTextoBranco),
+                style: Fontes.getMontserrat(
+                    fontSize: 40, cor: Cores.corTextoBranco),
               ),
             ),
           ),
@@ -44,19 +44,22 @@ class _StartedSecondPageState extends State<StartedSecondPage> {
           const Padding(padding: EdgeInsets.only(top: 10)),
           Text(
             'Para te ajudar com as suas tarefas diárias e\nmelhorar na sua organização e controle de\ntarefas',
-            style: Fontes.getMontserrat(fontSize: 14, cor: Cores.corTextoBranco),
+            style:
+                Fontes.getMontserrat(fontSize: 14, cor: Cores.corTextoBranco),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 20.0),
-          ButtomStarted( 
+          ButtomStarted(
             text: 'Vamos Lá',
             corFundo: Cores.corBotaoRoxo,
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => RegisterLoginPage()),);
+                MaterialPageRoute(builder: (context) => RegisterLoginPage()),
+              );
             },
           ),
+          const Padding(padding: EdgeInsets.only(top: 24.0)),
         ],
       ),
     );

@@ -30,22 +30,22 @@ class _ButtomWidgetState extends State<ButtomWidget> {
             side: const BorderSide(color: Cores.corTextoBranco),
           ),
         ),
-        // child: Text(
-        //   widget.text,
-        //   style: Fontes.getMontserrat(fontSize: 24, cor: Cores.corTextoBranco),
-        // ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.medical_services_outlined,
-            ),
-            const SizedBox(width: 8.0),
-            Text(
-              widget.text,
-              style: Fontes.getMontserrat(fontSize: 24, cor: Cores.corTextoBranco),
-            ),
-          ],
+        child: Text(
+          widget.text,
+          style: Fontes.getMontserrat(fontSize: 16, cor: Cores.corTextoBranco),
         ),
+        // child: Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     const Icon(Icons.medical_services_outlined,
+        //     ),
+        //     const SizedBox(width: 8.0),
+        //     Text(
+        //       widget.text,
+        //       style: Fontes.getMontserrat(fontSize: 24, cor: Cores.corTextoBranco),
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }
