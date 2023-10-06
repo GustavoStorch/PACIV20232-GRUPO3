@@ -1,4 +1,6 @@
+// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:sha_pages/pages/login_page/login_page.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
 import 'package:sha_compartilhados/componentes/botoes/buttom_started_widget.dart';
@@ -40,7 +42,12 @@ class _RegisterLoginPageState extends State<RegisterLoginPage> {
           ButtomStarted(
             text: 'Log in',
             corFundo: Cores.corBotaoRoxo,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
+            },
           ),
           const SizedBox(height: 20.0),
           ButtomWidget(

@@ -6,8 +6,14 @@ class ButtomStarted extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final Color? corFundo;
+  final IconData? icon;
 
-  ButtomStarted({required this.text, required this.onPressed, this.corFundo});
+  ButtomStarted({
+    required this.text,
+    required this.onPressed,
+    this.corFundo,
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +30,15 @@ class ButtomStarted extends StatelessWidget {
             borderRadius: BorderRadius.circular(80.0),
           ),
         ),
-        child: Text(
-          text,
-          style: Fontes.getMontserrat(fontSize: 24, cor: Cores.corTextPreto),
-        ),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          if (icon != null) Icon(icon, size: 24),
+          const SizedBox(width: 8.0),
+          Text(
+            text,
+            style: Fontes.getMontserrat(fontSize: 24, cor: Cores.corTextPreto),
+          ),
+        ]),
       ),
     );
   }

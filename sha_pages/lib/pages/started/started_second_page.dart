@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
@@ -26,9 +28,9 @@ class _StartedSecondPageState extends State<StartedSecondPage> {
           Align(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: const EdgeInsets.only(top: 30.0),
+              padding: const EdgeInsets.only(top: 50.0),
               child: Text(
-                'S.H.A',
+                'S.H.A.',
                 style: Fontes.getMontserrat(
                     fontSize: 40, cor: Cores.corTextoBranco),
               ),
@@ -59,7 +61,7 @@ class _StartedSecondPageState extends State<StartedSecondPage> {
               );
             },
           ),
-          const Padding(padding: EdgeInsets.only(top: 24.0)),
+          const Padding(padding: EdgeInsets.only(bottom: 30.0)),
         ],
       ),
     );

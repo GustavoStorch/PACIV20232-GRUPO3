@@ -6,8 +6,14 @@ class ButtomWidget extends StatefulWidget {
   final String text;
   final VoidCallback onPressed;
   final Color? corFundo;
+  final String? icon;
 
-  ButtomWidget({required this.text, required this.onPressed, this.corFundo});
+  ButtomWidget({
+    required this.text,
+    required this.onPressed,
+    this.corFundo,
+    this.icon,
+  });
 
   @override
   State<ButtomWidget> createState() => _ButtomWidgetState();
@@ -30,22 +36,21 @@ class _ButtomWidgetState extends State<ButtomWidget> {
             side: const BorderSide(color: Cores.corTextoBranco),
           ),
         ),
-        child: Text(
-          widget.text,
-          style: Fontes.getMontserrat(fontSize: 16, cor: Cores.corTextoBranco),
-        ),
-        // child: Row(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     const Icon(Icons.medical_services_outlined,
-        //     ),
-        //     const SizedBox(width: 8.0),
-        //     Text(
-        //       widget.text,
-        //       style: Fontes.getMontserrat(fontSize: 24, cor: Cores.corTextoBranco),
-        //     ),
-        //   ],
-        // ),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          if (widget.icon != null)
+            Image.asset(
+              widget.icon!,
+              width: 1,
+              height: 1,
+            ),
+          const SizedBox(width: 0.0),
+          Text(
+            widget.text,
+            style:
+                Fontes.getMontserrat(fontSize: 16, cor: Cores.corTextoBranco),
+          ),
+        ]),
       ),
     );
   }
