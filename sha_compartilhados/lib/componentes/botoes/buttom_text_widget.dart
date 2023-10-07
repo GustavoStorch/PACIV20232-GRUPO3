@@ -18,7 +18,7 @@ class TextButtomWidget extends StatelessWidget {
         style: const TextStyle(
           color: Cores.corTextoBranco,
           decoration: TextDecoration.underline,
-          fontSize: 14,
+          fontSize: 12,
         ),
       ),
     );

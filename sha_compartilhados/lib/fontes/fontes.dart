@@ -5,12 +5,14 @@ abstract class Fontes {
     double? fontSize,
     Color? cor,
     double? latterSpacing,
+    FontWeight? fontWeight,
   }) {
     return TextStyle(
       fontFamily: 'Montserrat',
       fontSize: fontSize,
       color: cor,
       letterSpacing: latterSpacing,
+      fontWeight: fontWeight,
     );
   }
 }

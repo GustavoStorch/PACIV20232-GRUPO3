@@ -5,6 +5,7 @@ import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
 import 'package:sha_compartilhados/componentes/botoes/buttom_started_widget.dart';
 import 'package:sha_compartilhados/componentes/botoes/button_widget.dart';
+import 'package:sha_pages/pages/register_page/register_page.dart';
 
 class RegisterLoginPage extends StatefulWidget {
   const RegisterLoginPage({Key? key}) : super(key: key);
@@ -51,24 +52,33 @@ class _RegisterLoginPageState extends State<RegisterLoginPage> {
           ),
           const SizedBox(height: 20.0),
           ButtomWidget(
+            icon: 'assets/phone.ico',
+            corFundoICon: Colors.white,
             text: 'Continue with phone number',
             corFundo: Cores.corTextPreto,
             onPressed: () {},
           ),
           const SizedBox(height: 20.0),
           ButtomWidget(
+            icon: 'assets/google.ico',
             text: 'Continue with Google',
             corFundo: Cores.corTextPreto,
             onPressed: () {},
           ),
           const SizedBox(height: 20.0),
           ButtomWidget(
+            icon: 'assets/facebook2.ico',
             text: 'Continue with Facebook',
             corFundo: Cores.corTextPreto,
             onPressed: () {},
           ),
           GestureDetector(
-            onTap: () => {}, // Chama a função de navegação ao ser pressionado
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const RegisterPage()),
+              ),
+            },
             child: Padding(
               padding: const EdgeInsets.only(top: 14.0),
               child: Text(

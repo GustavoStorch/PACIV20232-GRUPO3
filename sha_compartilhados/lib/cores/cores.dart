@@ -12,4 +12,8 @@ abstract class Cores {
   static const Color corTextoRoxo = Color(0xff6D0387);
 
   static const Color corTextPreto = Color(0xff000000);
+
+  static const Color corButtomIcon = Color(0xff000000);
+
+  static const Color corButtomIconHover = Color(0xFF2F2B2B);
 }

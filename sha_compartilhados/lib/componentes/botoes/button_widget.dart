@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
@@ -7,12 +9,14 @@ class ButtomWidget extends StatefulWidget {
   final VoidCallback onPressed;
   final Color? corFundo;
   final String? icon;
+  final Color? corFundoICon;
 
   ButtomWidget({
     required this.text,
     required this.onPressed,
     this.corFundo,
     this.icon,
+    this.corFundoICon,
   });
 
   @override
@@ -36,21 +40,34 @@ class _ButtomWidgetState extends State<ButtomWidget> {
             side: const BorderSide(color: Cores.corTextoBranco),
           ),
         ),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          if (widget.icon != null)
-            Image.asset(
-              widget.icon!,
-              width: 1,
-              height: 1,
+        child: Row(
+          children: [
+            if (widget.icon != null)
+              const Padding(padding: EdgeInsets.only(left: 15)),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 0.0),
+                child: Image.asset(
+                  widget.icon!,
+                  width: 24,
+                  height: 24,
+                  color: widget.corFundoICon,
+                ),
+              ),
             ),
-          const SizedBox(width: 0.0),
-          Text(
-            widget.text,
-            style:
-                Fontes.getMontserrat(fontSize: 16, cor: Cores.corTextoBranco),
-          ),
-        ]),
+            Expanded(
+              child: Text(
+                widget.text,
+                style: Fontes.getMontserrat(
+                  fontSize: 16,
+                  cor: Cores.corTextoBranco,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
