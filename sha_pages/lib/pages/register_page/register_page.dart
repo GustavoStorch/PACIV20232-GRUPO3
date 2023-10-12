@@ -5,7 +5,7 @@ import 'package:sha_compartilhados/fontes/fontes.dart';
 import 'package:sha_compartilhados/componentes/botoes/buttom_started_widget.dart';
 import 'package:sha_compartilhados/componentes/campos/text_field_string_widget.dart';
 import 'package:sha_compartilhados/componentes/botoes/icon_buttom_wdiget.dart';
-import 'package:sha_pages/pages/home_page/home_page.dart';
+import 'package:sha_pages/pages/home_page/home_page_initial.dart';
 import 'package:sha_pages/pages/login_page/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -106,7 +106,8 @@ class _RegisterPageState extends State<RegisterPage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(
+                    builder: (context) => const HomePageInitial()),
               );
             },
           ),

@@ -121,7 +121,7 @@ class _TextFieldStringWidgetState extends State<TextFieldtringWidget> {
                   color: errorText.isNotEmpty ? Colors.red : Colors.grey,
                   width: 0.7,
                 ),
-                borderRadius: const BorderRadius.all(Radius.circular(5)),
+                borderRadius: const BorderRadius.all(Radius.circular(15)),
               ),
               focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -129,7 +129,7 @@ class _TextFieldStringWidgetState extends State<TextFieldtringWidget> {
                     width: 0.7,
                   ),
                   borderRadius: const BorderRadius.all(
-                    Radius.circular(5),
+                    Radius.circular(15),
                   )),
               border: OutlineInputBorder(
                 borderSide: BorderSide(
@@ -137,7 +137,7 @@ class _TextFieldStringWidgetState extends State<TextFieldtringWidget> {
                   width: 0.7,
                 ),
                 borderRadius: const BorderRadius.all(
-                  Radius.circular(5),
+                  Radius.circular(15),
                 ),
               ),
             ),

@@ -16,4 +16,6 @@ abstract class Cores {
   static const Color corButtomIcon = Color(0xff000000);
 
   static const Color corButtomIconHover = Color(0xFF2F2B2B);
+
+  static const Color corNavBarInferior = Color(0xFF333333);
 }

@@ -7,6 +7,7 @@ import 'package:sha_compartilhados/componentes/campos/text_field_string_widget.d
 import 'package:sha_compartilhados/componentes/botoes/buttom_text_widget.dart';
 import 'package:sha_compartilhados/componentes/botoes/icon_buttom_wdiget.dart';
 import 'package:sha_pages/pages/register_page/register_page.dart';
+import 'package:sha_pages/pages/home_page/home_page_initial.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -95,7 +96,13 @@ class _LoginPageState extends State<LoginPage> {
           ButtomStarted(
             text: 'Log In',
             corFundo: Cores.corBotaoRoxo,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const HomePageInitial()),
+              );
+            },
           ),
           const SizedBox(height: 20),
           SizedBox(
