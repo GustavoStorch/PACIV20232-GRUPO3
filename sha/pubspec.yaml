@@ -15,11 +15,15 @@ dependencies:
     path: '../sha_compartilhados'
   sha_pages:
     path: '../sha_pages'
+  sha_models:
+    path: '../sha_models'
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  firebase_core: ^2.17.0
+  cloud_firestore: ^4.9.3
 
 flutter:
   uses-material-design: true

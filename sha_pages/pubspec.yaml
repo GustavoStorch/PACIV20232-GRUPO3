@@ -13,6 +13,11 @@ dependencies:
     path: '../sha_dependencias'
   sha_compartilhados:
     path: '../sha_compartilhados'
+  sha_models:
+    path: '../sha_models'
+  sha:
+    path: '../sha'
+  cloud_firestore: ^4.10.0
 
 dev_dependencies:
   flutter_test:

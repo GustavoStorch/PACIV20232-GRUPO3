@@ -36,153 +36,155 @@ class _LoginPageState extends State<LoginPage> {
     double fullWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Cores.corPrincipal,
-      body: Column(
-        children: [
-          const Spacer(),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 30.0),
-              child: Text(
-                'Log In',
-                style: Fontes.getMontserrat(
-                  fontSize: 24,
-                  cor: Cores.corTextoBranco,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () => {Navigator.of(context).pop(false)},
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: RichText(
-                text: TextSpan(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Padding(padding: EdgeInsets.only(top: 120)),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: Text(
+                  'Log In',
                   style: Fontes.getMontserrat(
-                      cor: Cores.corTextoBranco, fontSize: 12),
-                  children: const <TextSpan>[
-                    TextSpan(text: 'If You Need Any Support '),
-                    TextSpan(
-                      text: 'Click Here',
-                      style: TextStyle(
-                        color: Cores.corTextoRoxo,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                    fontSize: 24,
+                    cor: Cores.corTextoBranco,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 22, left: 22, top: 30),
-            child: txtUsername,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 22, left: 22, top: 24),
-            child: txtSenha,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 250, top: 24),
-            child: TextButtomWidget(
-              onTap: () => {
-                Navigator.of(context).pop(false),
-              },
-              text: 'Forgot Password?',
+            GestureDetector(
+              onTap: () => {Navigator.of(context).pop(false)},
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: RichText(
+                  text: TextSpan(
+                    style: Fontes.getMontserrat(
+                        cor: Cores.corTextoBranco, fontSize: 12),
+                    children: const <TextSpan>[
+                      TextSpan(text: 'If You Need Any Support '),
+                      TextSpan(
+                        text: 'Click Here',
+                        style: TextStyle(
+                          color: Cores.corTextoRoxo,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-          ),
-          const Padding(padding: EdgeInsets.only(top: 24)),
-          ButtomStarted(
-            text: 'Log In',
-            corFundo: Cores.corBotaoRoxo,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HomePageInitial()),
-              );
-            },
-          ),
-          const SizedBox(height: 20),
-          SizedBox(
-            width: fullWidth * 0.8,
-            child: const Row(
+            Padding(
+              padding: const EdgeInsets.only(right: 22, left: 22, top: 30),
+              child: txtUsername,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 22, left: 22, top: 24),
+              child: txtSenha,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 250, top: 24),
+              child: TextButtomWidget(
+                onTap: () => {
+                  Navigator.of(context).pop(false),
+                },
+                text: 'Forgot Password?',
+              ),
+            ),
+            const Padding(padding: EdgeInsets.only(top: 24)),
+            ButtomStarted(
+              text: 'Log In',
+              corFundo: Cores.corBotaoRoxo,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const HomePageInitial()),
+                );
+              },
+            ),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: fullWidth * 0.8,
+              child: const Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      color: Colors.grey,
+                      height: 1,
+                      thickness: 1,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      'Or',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      color: Colors.grey,
+                      height: 1,
+                      thickness: 1,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Padding(padding: EdgeInsets.only(top: 24)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey,
-                    height: 1,
-                    thickness: 1,
-                  ),
+                IconButtomWidget(
+                  icon: 'assets/facebook.ico',
+                  onPressed: () {},
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Text(
-                    'Or',
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                const SizedBox(width: 20),
+                IconButtomWidget(
+                  icon: 'assets/google.ico',
+                  onPressed: () {},
                 ),
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey,
-                    height: 1,
-                    thickness: 1,
-                  ),
+                const SizedBox(width: 20),
+                IconButtomWidget(
+                  icon: 'assets/apple.ico',
+                  corFundoIcon: Colors.white,
+                  onPressed: () {},
                 ),
               ],
             ),
-          ),
-          const Padding(padding: EdgeInsets.only(top: 24)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButtomWidget(
-                icon: 'assets/facebook.ico',
-                onPressed: () {},
-              ),
-              const SizedBox(width: 20),
-              IconButtomWidget(
-                icon: 'assets/google.ico',
-                onPressed: () {},
-              ),
-              const SizedBox(width: 20),
-              IconButtomWidget(
-                icon: 'assets/apple.ico',
-                corFundoIcon: Colors.white,
-                onPressed: () {},
-              ),
-            ],
-          ),
-          GestureDetector(
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const RegisterPage()),
-              ),
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(top: 24.0),
-              child: RichText(
-                text: TextSpan(
-                  style: Fontes.getMontserrat(
-                      cor: Cores.corTextoBranco, fontSize: 12),
-                  children: const <TextSpan>[
-                    TextSpan(text: 'Don\'t Have An Account? '),
-                    TextSpan(
-                      text: 'Register',
-                      style: TextStyle(
-                        color: Cores.corTextoRoxo,
-                        fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RegisterPage()),
+                ),
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(top: 24.0),
+                child: RichText(
+                  text: TextSpan(
+                    style: Fontes.getMontserrat(
+                        cor: Cores.corTextoBranco, fontSize: 12),
+                    children: const <TextSpan>[
+                      TextSpan(text: 'Don\'t Have An Account? '),
+                      TextSpan(
+                        text: 'Register',
+                        style: TextStyle(
+                          color: Cores.corTextoRoxo,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          const Padding(padding: EdgeInsets.only(top: 90.0)),
-        ],
+            const Padding(padding: EdgeInsets.only(top: 90.0)),
+          ],
+        ),
       ),
     );
   }
