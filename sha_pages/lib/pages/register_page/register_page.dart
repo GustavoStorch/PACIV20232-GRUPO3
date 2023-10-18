@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, avoid_print
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, avoid_print, depend_on_referenced_packages
 import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
@@ -9,6 +9,7 @@ import 'package:sha_pages/pages/home_page/home_page_initial.dart';
 import 'package:sha_pages/pages/login_page/login_page.dart';
 import 'package:sha_models/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -22,14 +23,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
   late final TextFieldtringWidget txtUsername = TextFieldtringWidget(
     placeholder: 'Full Name',
-    onFieldSubmitted: (String? str) {
+    onChanged: (String? str) {
       usuario.nome = txtUsername.text;
     },
   );
 
   late final TextFieldtringWidget txtEmail = TextFieldtringWidget(
     placeholder: 'Enter Email',
-    onFieldSubmitted: (String? str) {
+    onChanged: (String? str) {
       usuario.email = txtEmail.text;
     },
   );
@@ -37,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
   late final TextFieldtringWidget txtSenha = TextFieldtringWidget(
     placeholder: 'Password',
     password: true,
-    onFieldSubmitted: (String? str) {
+    onChanged: (String? str) {
       setState(() {
         usuario.senha = txtSenha.text;
       });
@@ -47,7 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
   late final TextFieldtringWidget txtRepeatSenha = TextFieldtringWidget(
     placeholder: 'Repeat Password',
     password: true,
-    onFieldSubmitted: (String? str) {
+    onChanged: (String? str) {
       setState(() {
         usuario.senhaConfirmacao = txtRepeatSenha.text;
       });
@@ -126,15 +127,8 @@ class _RegisterPageState extends State<RegisterPage> {
               text: 'Register',
               corFundo: Cores.corBotaoRoxo,
               onPressed: () {
-                print(
-                    'Nome: ${usuario.nome}\nEmail: ${usuario.nome}\nSenha: ${usuario.senha}\nSenha2: ${usuario.senhaConfirmacao}');
-                registrarUsuario(
-                  nome: usuario.nome,
-                  email: usuario.email,
-                  senha: usuario.senha,
-                  senhaConfirmacao: usuario.senhaConfirmacao,
-                  context: context,
-                );
+                registrarUsuarioComAuthEFirestore(
+                    usuario: usuario, context: context);
               },
             ),
             const SizedBox(height: 20),
@@ -221,14 +215,11 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Future<void> registrarUsuario({
-    required String? nome,
-    required String? email,
-    required String? senha,
-    required String? senhaConfirmacao,
+  Future<void> registrarUsuarioComAuthEFirestore({
+    required UsuarioModel usuario,
     required BuildContext context,
   }) async {
-    if (senha != senhaConfirmacao) {
+    if (usuario.senha != usuario.senhaConfirmacao) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('As senhas não coincidem')),
       );
@@ -236,18 +227,28 @@ class _RegisterPageState extends State<RegisterPage> {
     }
 
     try {
-      FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-      await firestore.collection('usuarios').add({
-        'nome': nome,
-        'email': email,
-        'senha': senha,
-      });
-
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePageInitial()),
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: usuario.email!,
+        password: usuario.senha!,
       );
+
+      User? user = userCredential.user;
+      if (user != null) {
+        await FirebaseFirestore.instance
+            .collection('usuarios')
+            .doc(user.uid)
+            .set({
+          'nome': usuario.nome,
+          'email': usuario.email,
+          'senha': usuario.senha,
+        });
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePageInitial()),
+        );
+      }
     } catch (e) {
       print('Erro de registro: $e');
       ScaffoldMessenger.of(context).showSnackBar(

@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, avoid_print, depend_on_referenced_packages, unused_local_variable
 import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
@@ -6,8 +6,10 @@ import 'package:sha_compartilhados/componentes/botoes/buttom_started_widget.dart
 import 'package:sha_compartilhados/componentes/campos/text_field_string_widget.dart';
 import 'package:sha_compartilhados/componentes/botoes/buttom_text_widget.dart';
 import 'package:sha_compartilhados/componentes/botoes/icon_buttom_wdiget.dart';
-import 'package:sha_pages/pages/register_page/register_page.dart';
+import 'package:sha_models/main.dart';
 import 'package:sha_pages/pages/home_page/home_page_initial.dart';
+import 'package:sha_pages/pages/register_page/register_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,18 +19,28 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  late UsuarioModel usuario;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   late final TextFieldtringWidget txtUsername = TextFieldtringWidget(
     placeholder: 'Enter Username Or Email',
+    onChanged: (String? str) {
+      usuario.nome = txtUsername.text;
+    },
   );
 
   late final TextFieldtringWidget txtSenha = TextFieldtringWidget(
     placeholder: 'Password',
     password: true,
+    onChanged: (String? str) {
+      usuario.senha = txtSenha.text;
+    },
   );
 
   @override
   void initState() {
     super.initState();
+    usuario = UsuarioModel.empty();
   }
 
   @override
@@ -98,11 +110,8 @@ class _LoginPageState extends State<LoginPage> {
               text: 'Log In',
               corFundo: Cores.corBotaoRoxo,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const HomePageInitial()),
-                );
+                print('${usuario.nome}\n${usuario.senha}');
+                _login(usuario.nome, usuario.senha);
               },
             ),
             const SizedBox(height: 20),
@@ -187,5 +196,31 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  Future<void> _login(String? usuario, String? senha) async {
+    String email = usuario!;
+    String password = senha!;
+
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePageInitial(),
+          ));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print("Não foi encontrado usuário para este e-mail.");
+      } else if (e.code == 'wrong-password') {
+        print("Senha icorreta.");
+      } else {
+        print("Error: $e");
+      }
+    }
   }
 }

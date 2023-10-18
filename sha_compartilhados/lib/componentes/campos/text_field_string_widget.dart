@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, no_logic_in_create_state, overridden_fields, annotate_overrides
+// ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, no_logic_in_create_state, overridden_fields, annotate_overrides, prefer_if_null_operators
 
 import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
@@ -11,6 +11,8 @@ class TextFieldtringWidget extends StatefulWidget {
     this.validator,
     this.textInputAction,
     this.onFieldSubmitted,
+    this.onChanged,
+    this.readOnly = false,
     Key? key,
   }) : super(key: key);
 
@@ -22,6 +24,8 @@ class TextFieldtringWidget extends StatefulWidget {
   final String Function(String? str)? validator;
   final TextInputAction? textInputAction;
   final void Function(String? str)? onFieldSubmitted;
+  final void Function(String str)? onChanged;
+  final bool readOnly;
 
   String get text => key.currentState!.controller.text;
 
@@ -38,6 +42,7 @@ class TextFieldtringWidget extends StatefulWidget {
   State<TextFieldtringWidget> createState() => _TextFieldStringWidgetState(
         key: key,
         textInputAction: textInputAction,
+        onChanged: onChanged,
       );
 }
 
@@ -45,9 +50,11 @@ class _TextFieldStringWidgetState extends State<TextFieldtringWidget> {
   _TextFieldStringWidgetState({
     Key? key,
     this.textInputAction,
+    this.onChanged,
   });
   final FocusNode focusNode = FocusNode();
   final TextInputAction? textInputAction;
+  final void Function(String str)? onChanged;
 
   final TextEditingController controller = TextEditingController();
   bool visible = false;
@@ -70,15 +77,11 @@ class _TextFieldStringWidgetState extends State<TextFieldtringWidget> {
           shadowColor: Colors.grey,
           child: TextField(
             textInputAction: textInputAction,
-            onChanged: (value) {
-              String error = '';
-              if (widget.validator != null) {
-                String? validatedString = widget.validator!(value);
-                error = validatedString;
+            onChanged: (String? str) {
+              if (!widget.readOnly) {
+                validate();
+                if (onChanged != null) onChanged!(str == null ? '' : str);
               }
-              setState(() {
-                errorText = error;
-              });
             },
             obscureText: !visible && widget.password,
             obscuringCharacter: '*',

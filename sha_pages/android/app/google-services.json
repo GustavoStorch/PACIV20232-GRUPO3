@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "344507617076",
+    "project_id": "pacivgrupo3",
+    "storage_bucket": "pacivgrupo3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344507617076:android:37df4f3a9fe13e5b1adf61",
+        "android_client_info": {
+          "package_name": "com.example.sha"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy9LCIqd9pCg1JWTLG2iXknPMeTFqVx54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
