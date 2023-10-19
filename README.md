@@ -1,7 +1,13 @@
 # PACIV20232-GRUPO3
 # SHA - Smart Home Assistant
 
-![Logo do SHA](https://github.com/GustavoStorch/PACIV20232-GRUPO3/assets/93745213/1a9f71a9-bb7e-46a8-90e8-29991b731c16)
+## Screenshots
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+  <img src="mockup-images/login-screen.png" style="width: 190px; margin-right: 20px; margin-bottom: 20px;">
+  <img src="mockup-images/register-screen.png" style="width: 190px; margin-right: 20px; margin-bottom: 20px;">
+  <img src="mockup-images/home-screen.png" style="width: 190px; margin-right: 20px; margin-bottom: 20px;">
+  <img src="mockup-images/items-screen.png" style="width: 190px; margin-right: 20px; margin-bottom: 20px;">
+</div>
 
 
 O SHA (Smart Home Assistant) é um aplicativo projetado para simplificar e melhorar a gestão da sua casa, ajudando nas tarefas diárias e na organização do ambiente doméstico e atividades pessoais relacionadas ao lar e conforto.
