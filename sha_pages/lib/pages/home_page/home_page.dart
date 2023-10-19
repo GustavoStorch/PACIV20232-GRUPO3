@@ -1,13 +1,9 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, unused_local_variable
 import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
-import 'package:sha_compartilhados/componentes/botoes/buttom_started_widget.dart';
 import 'package:sha_compartilhados/componentes/campos/text_field_string_widget.dart';
-import 'package:sha_compartilhados/componentes/botoes/buttom_text_widget.dart';
-import 'package:sha_compartilhados/componentes/botoes/icon_buttom_wdiget.dart';
-import 'package:sha_pages/pages/register_page/register_page.dart';
-import 'package:sha_pages/pages/home_page/home_page_initial.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,6 +22,21 @@ class _HomePageState extends State<HomePage> {
     password: true,
   );
 
+  final List<CarouselItem> items = [
+    CarouselItem(
+      imagePath: 'assets/provisorio2.png',
+      text: 'Mercado',
+    ),
+    CarouselItem(
+      imagePath: 'assets/provisorio3.png',
+      text: 'revelações',
+    ),
+    CarouselItem(
+      imagePath: 'assets/provisorio4.png',
+      text: 'Armário',
+    ),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -36,154 +47,73 @@ class _HomePageState extends State<HomePage> {
     double fullWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Cores.corPrincipal,
-      body: Column(
-        children: [
-          const Spacer(),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 30.0),
-              child: Text(
-                'Log In',
-                style: Fontes.getMontserrat(
-                  fontSize: 24,
-                  cor: Cores.corTextoBranco,
-                  fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 5.0),
+                child: Image.asset(
+                  'assets/provisorio1.png',
+                  width: 500,
+                  height: 200,
                 ),
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: () => {Navigator.of(context).pop(false)},
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: RichText(
-                text: TextSpan(
-                  style: Fontes.getMontserrat(
-                      cor: Cores.corTextoBranco, fontSize: 12),
-                  children: const <TextSpan>[
-                    TextSpan(text: 'If You Need Any Support '),
-                    TextSpan(
-                      text: 'Click Here',
-                      style: TextStyle(
-                        color: Cores.corTextoRoxo,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+            Text(
+              'Recomendações',
+              style: Fontes.getMontserrat(
+                fontSize: 24,
+                cor: Cores.corTextoBranco,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 0),
+              child: CarouselSlider(
+                items: items.map((item) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Column(
+                        children: [
+                          Image.asset(
+                            item.imagePath,
+                            width: 200,
+                            height: 200,
+                          ),
+                          Text(
+                            item.text,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }).toList(),
+                options: CarouselOptions(
+                  height: 400,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 2),
+                  viewportFraction: 1 / 3,
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 22, left: 22, top: 30),
-            child: txtUsername,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 22, left: 22, top: 24),
-            child: txtSenha,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 250, top: 24),
-            child: TextButtomWidget(
-              onTap: () => {
-                Navigator.of(context).pop(false),
-              },
-              text: 'Forgot Password?',
-            ),
-          ),
-          const Padding(padding: EdgeInsets.only(top: 24)),
-          ButtomStarted(
-            text: 'Log In',
-            corFundo: Cores.corBotaoRoxo,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HomePageInitial()),
-              );
-            },
-          ),
-          const SizedBox(height: 20),
-          SizedBox(
-            width: fullWidth * 0.8,
-            child: const Row(
-              children: [
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey,
-                    height: 1,
-                    thickness: 1,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Text(
-                    'Or',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ),
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey,
-                    height: 1,
-                    thickness: 1,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const Padding(padding: EdgeInsets.only(top: 24)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButtomWidget(
-                icon: 'assets/facebook.ico',
-                onPressed: () {},
-              ),
-              const SizedBox(width: 20),
-              IconButtomWidget(
-                icon: 'assets/google.ico',
-                onPressed: () {},
-              ),
-              const SizedBox(width: 20),
-              IconButtomWidget(
-                icon: 'assets/apple.ico',
-                corFundoIcon: Colors.white,
-                onPressed: () {},
-              ),
-            ],
-          ),
-          GestureDetector(
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const RegisterPage()),
-              ),
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(top: 24.0),
-              child: RichText(
-                text: TextSpan(
-                  style: Fontes.getMontserrat(
-                      cor: Cores.corTextoBranco, fontSize: 12),
-                  children: const <TextSpan>[
-                    TextSpan(text: 'Don\'t Have An Account? '),
-                    TextSpan(
-                      text: 'Register',
-                      style: TextStyle(
-                        color: Cores.corTextoRoxo,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          const Padding(padding: EdgeInsets.only(top: 90.0)),
-        ],
+          ],
+        ),
       ),
     );
   }
+}
+
+class CarouselItem {
+  final String imagePath;
+  final String text;
+
+  CarouselItem({
+    required this.imagePath,
+    required this.text,
+  });
 }

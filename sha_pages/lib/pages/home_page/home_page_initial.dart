@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
+import 'package:sha_pages/pages/historico/historico_page.dart';
 import 'package:sha_pages/pages/home_page/home_page.dart';
 
 class HomePageInitial extends StatefulWidget {
@@ -24,15 +25,20 @@ class _HomePageInitialState extends State<HomePageInitial> {
       'Index 2: teste',
       style: optionStyle,
     ),
+    HistoricoPage(),
     Text(
       'Index 3: Histórico',
       style: optionStyle,
     ),
-    Text(
-      'Index 4: Perfil',
-      style: optionStyle,
-    ),
   ];
+
+  final Map<int, String> titles = {
+    0: 'Home',
+    1: 'Listas',
+    2: 'teste',
+    3: 'Histórico',
+    4: 'Perfil',
+  };
 
   void _onItemTapped(int index) {
     setState(() {
@@ -50,8 +56,11 @@ class _HomePageInitialState extends State<HomePageInitial> {
           icon: Image.asset('assets/lupa.ico', width: 24, height: 24),
           onPressed: () {},
         ),
+        title: Text(titles[_selectedIndex] ?? ''),
+        centerTitle: true,
         actions: [
           IconButton(
+            // icon: const Icon(Icons.logout),
             icon: Image.asset('assets/conf.ico', width: 24, height: 24),
             onPressed: () {},
           ),
