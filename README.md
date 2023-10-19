@@ -3,10 +3,11 @@
 
 ## Screenshots
 <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-  <img src="mockup-images/login-screen.png" style="width: 190px; margin-right: 20px; margin-bottom: 20px;">
-  <img src="mockup-images/register-screen.png" style="width: 190px; margin-right: 20px; margin-bottom: 20px;">
-  <img src="mockup-images/home-screen.png" style="width: 190px; margin-right: 20px; margin-bottom: 20px;">
-  <img src="mockup-images/items-screen.png" style="width: 190px; margin-right: 20px; margin-bottom: 20px;">
+  <img src="mockup-images/log-screen.png" style="width: 170px; margin-right: 20px; margin-bottom: 20px;">
+  <img src="mockup-images/login-screen.png" style="width: 170px; margin-right: 20px; margin-bottom: 20px;">
+  <img src="mockup-images/register-screen.png" style="width: 170px; margin-right: 20px; margin-bottom: 20px;">
+  <img src="mockup-images/home-screen.png" style="width: 170px; margin-right: 20px; margin-bottom: 20px;">
+  <img src="mockup-images/items-screen.png" style="width: 170px; margin-right: 20px; margin-bottom: 20px;">
 </div>
 
 
