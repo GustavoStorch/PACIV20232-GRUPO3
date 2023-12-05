@@ -1,0 +1,47 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+
+import 'package:flutter/material.dart';
+import 'package:sha_compartilhados/cores/cores.dart';
+import 'package:sha_compartilhados/fontes/fontes.dart';
+
+class SaveButtomWidget extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+  final Color? corFundo;
+  final IconData? icon;
+
+  SaveButtomWidget({
+    required this.text,
+    required this.onPressed,
+    this.corFundo,
+    this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 160.0,
+      height: 55.0,
+      margin: const EdgeInsets.only(),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          foregroundColor: corFundo,
+          backgroundColor: corFundo,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(80.0),
+          ),
+        ),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          if (icon != null) Icon(icon, size: 24),
+          const SizedBox(width: 8.0),
+          Text(
+            text,
+            style: Fontes.getMontserrat(fontSize: 24, cor: Cores.corTextPreto),
+          ),
+        ]),
+      ),
+    );
+  }
+}

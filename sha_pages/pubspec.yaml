@@ -17,6 +17,7 @@ dependencies:
     path: '../sha_models'
   sha:
     path: '../sha'
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

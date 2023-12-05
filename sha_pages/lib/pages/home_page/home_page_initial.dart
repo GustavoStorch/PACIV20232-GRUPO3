@@ -3,6 +3,8 @@ import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
 import 'package:sha_pages/pages/historico/historico_page.dart';
 import 'package:sha_pages/pages/home_page/home_page.dart';
+import 'package:sha_pages/pages/list_page/list_home_page.dart';
+import 'package:sha_pages/pages/list_page/list_page.dart';
 
 class HomePageInitial extends StatefulWidget {
   const HomePageInitial({super.key});
@@ -21,10 +23,7 @@ class _HomePageInitialState extends State<HomePageInitial> {
       'Index 1: Listas',
       style: optionStyle,
     ),
-    Text(
-      'Index 2: teste',
-      style: optionStyle,
-    ),
+    ListHomePage(),
     HistoricoPage(),
     Text(
       'Index 3: Histórico',
@@ -35,7 +34,7 @@ class _HomePageInitialState extends State<HomePageInitial> {
   final Map<int, String> titles = {
     0: 'Home',
     1: 'Listas',
-    2: 'teste',
+    2: 'Adicionar Lista',
     3: 'Histórico',
     4: 'Perfil',
   };
@@ -44,6 +43,18 @@ class _HomePageInitialState extends State<HomePageInitial> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  IconButton _buildAdicionarListaIconButton() {
+    return IconButton(
+      icon: const Icon(Icons.add),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ListaPage()),
+        );
+      },
+    );
   }
 
   @override
@@ -59,11 +70,12 @@ class _HomePageInitialState extends State<HomePageInitial> {
         title: Text(titles[_selectedIndex] ?? ''),
         centerTitle: true,
         actions: [
-          IconButton(
-            // icon: const Icon(Icons.logout),
-            icon: Image.asset('assets/conf.ico', width: 24, height: 24),
-            onPressed: () {},
-          ),
+          _selectedIndex == 2
+              ? _buildAdicionarListaIconButton()
+              : IconButton(
+                  icon: Image.asset('assets/conf.ico', width: 24, height: 24),
+                  onPressed: () {},
+                ),
         ],
       ),
       body: Center(
@@ -83,7 +95,7 @@ class _HomePageInitialState extends State<HomePageInitial> {
           ),
           BottomNavigationBarItem(
             icon: Image.asset('assets/sha.ico', width: 24, height: 24),
-            label: 'teste',
+            label: 'Adicionar Lista',
             backgroundColor: Cores.corNavBarInferior,
           ),
           BottomNavigationBarItem(
