@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, unused_local_variable, depend_on_referenced_packages, avoid_print, use_build_context_synchronously
+// ignore_for_file: library_private_types_in_public_api, unused_local_variable, depend_on_referenced_packages, avoid_print, use_build_context_synchronously, unnecessary_null_comparison
 import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/componentes/botoes/save_buttom_widget.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
@@ -6,6 +6,7 @@ import 'package:sha_compartilhados/componentes/toasts/toast_utils.dart';
 import 'package:sha_compartilhados/componentes/campos/text_field_string_widget.dart';
 import 'package:sha_models/models/lista/lista_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sha_models/models/lista_item/lista_item_model.dart';
 
 class ListaPage extends StatefulWidget {
   const ListaPage({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class _ListaPageState extends State<ListaPage> {
     },
   );
 
-  List<String> itensLista = [];
+  List<ListaItemModel> itensLista = [];
 
   @override
   void initState() {
@@ -100,7 +101,7 @@ class _ListaPageState extends State<ListaPage> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
-                      itensLista[index],
+                      itensLista[index].nomeItem!,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -119,8 +120,10 @@ class _ListaPageState extends State<ListaPage> {
   void adicionarItem() {
     (itensLista);
     setState(() {
-      String novoItem = txtItem.text;
-      if (novoItem.isNotEmpty) {
+      ListaItemModel novoItem = ListaItemModel.empty();
+      if (novoItem != null) {
+        novoItem.nomeItem = txtItem.text;
+        novoItem.checkItem = false;
         itensLista.add(novoItem);
       }
     });
@@ -128,12 +131,17 @@ class _ListaPageState extends State<ListaPage> {
 
   void salvarLista() async {
     if (lista.nome!.isNotEmpty) {
-      DocumentReference documentReference = await _firestore
-          .collection('listas')
-          .add({
+      List<Map<String, dynamic>> itensListaData = [];
+
+      for (var item in itensLista) {
+        itensListaData.add(item.toJson());
+      }
+
+      DocumentReference documentReference =
+          await _firestore.collection('listas').add({
         'nome': lista.nome,
-        'itens': itensLista,
-        'dataHora': DateTime.now()
+        'itens': itensListaData,
+        'dataHora': DateTime.now(),
       });
 
       ToastUtils.showCustomToastSucess(

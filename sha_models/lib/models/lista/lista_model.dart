@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sha_models/models/lista_item/lista_item_model.dart';
 
 part 'lista_model.g.dart';
 part 'lista_model.freezed.dart';
@@ -8,10 +9,11 @@ sealed class ListaModel with _$ListaModel {
   const ListaModel._();
 
   factory ListaModel({
-    required int? cod,
+    required String? cod,
     required String? nome,
     required String? textAux,
-    required List<String>? itens,
+    required DateTime? dataHora,
+    required List<ListaItemModel>? itens,
   }) = _ListaModel;
 
   factory ListaModel.fromJson(Map<String, Object?> json) =>
@@ -22,9 +24,10 @@ sealed class ListaModel with _$ListaModel {
   }
 
   factory ListaModel.empty() => ListaModel(
-        cod: 0,
+        cod: '',
         nome: '',
         textAux: '',
+        dataHora: DateTime.now(),
         itens: [],
       );
 }

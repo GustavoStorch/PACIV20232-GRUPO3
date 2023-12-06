@@ -20,14 +20,16 @@ ListaModel _$ListaModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ListaModel {
-  int? get cod => throw _privateConstructorUsedError;
-  set cod(int? value) => throw _privateConstructorUsedError;
+  String? get cod => throw _privateConstructorUsedError;
+  set cod(String? value) => throw _privateConstructorUsedError;
   String? get nome => throw _privateConstructorUsedError;
   set nome(String? value) => throw _privateConstructorUsedError;
   String? get textAux => throw _privateConstructorUsedError;
   set textAux(String? value) => throw _privateConstructorUsedError;
-  List<String>? get itens => throw _privateConstructorUsedError;
-  set itens(List<String>? value) => throw _privateConstructorUsedError;
+  DateTime? get dataHora => throw _privateConstructorUsedError;
+  set dataHora(DateTime? value) => throw _privateConstructorUsedError;
+  List<ListaItemModel>? get itens => throw _privateConstructorUsedError;
+  set itens(List<ListaItemModel>? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +43,12 @@ abstract class $ListaModelCopyWith<$Res> {
           ListaModel value, $Res Function(ListaModel) then) =
       _$ListaModelCopyWithImpl<$Res, ListaModel>;
   @useResult
-  $Res call({int? cod, String? nome, String? textAux, List<String>? itens});
+  $Res call(
+      {String? cod,
+      String? nome,
+      String? textAux,
+      DateTime? dataHora,
+      List<ListaItemModel>? itens});
 }
 
 /// @nodoc
@@ -60,13 +67,14 @@ class _$ListaModelCopyWithImpl<$Res, $Val extends ListaModel>
     Object? cod = freezed,
     Object? nome = freezed,
     Object? textAux = freezed,
+    Object? dataHora = freezed,
     Object? itens = freezed,
   }) {
     return _then(_value.copyWith(
       cod: freezed == cod
           ? _value.cod
           : cod // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       nome: freezed == nome
           ? _value.nome
           : nome // ignore: cast_nullable_to_non_nullable
@@ -75,10 +83,14 @@ class _$ListaModelCopyWithImpl<$Res, $Val extends ListaModel>
           ? _value.textAux
           : textAux // ignore: cast_nullable_to_non_nullable
               as String?,
+      dataHora: freezed == dataHora
+          ? _value.dataHora
+          : dataHora // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       itens: freezed == itens
           ? _value.itens
           : itens // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<ListaItemModel>?,
     ) as $Val);
   }
 }
@@ -91,7 +103,12 @@ abstract class _$$ListaModelImplCopyWith<$Res>
       __$$ListaModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? cod, String? nome, String? textAux, List<String>? itens});
+  $Res call(
+      {String? cod,
+      String? nome,
+      String? textAux,
+      DateTime? dataHora,
+      List<ListaItemModel>? itens});
 }
 
 /// @nodoc
@@ -108,13 +125,14 @@ class __$$ListaModelImplCopyWithImpl<$Res>
     Object? cod = freezed,
     Object? nome = freezed,
     Object? textAux = freezed,
+    Object? dataHora = freezed,
     Object? itens = freezed,
   }) {
     return _then(_$ListaModelImpl(
       cod: freezed == cod
           ? _value.cod
           : cod // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       nome: freezed == nome
           ? _value.nome
           : nome // ignore: cast_nullable_to_non_nullable
@@ -123,10 +141,14 @@ class __$$ListaModelImplCopyWithImpl<$Res>
           ? _value.textAux
           : textAux // ignore: cast_nullable_to_non_nullable
               as String?,
+      dataHora: freezed == dataHora
+          ? _value.dataHora
+          : dataHora // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       itens: freezed == itens
           ? _value.itens
           : itens // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<ListaItemModel>?,
     ));
   }
 }
@@ -138,6 +160,7 @@ class _$ListaModelImpl extends _ListaModel {
       {required this.cod,
       required this.nome,
       required this.textAux,
+      required this.dataHora,
       required this.itens})
       : super._();
 
@@ -145,17 +168,19 @@ class _$ListaModelImpl extends _ListaModel {
       _$$ListaModelImplFromJson(json);
 
   @override
-  int? cod;
+  String? cod;
   @override
   String? nome;
   @override
   String? textAux;
   @override
-  List<String>? itens;
+  DateTime? dataHora;
+  @override
+  List<ListaItemModel>? itens;
 
   @override
   String toString() {
-    return 'ListaModel(cod: $cod, nome: $nome, textAux: $textAux, itens: $itens)';
+    return 'ListaModel(cod: $cod, nome: $nome, textAux: $textAux, dataHora: $dataHora, itens: $itens)';
   }
 
   @JsonKey(ignore: true)
@@ -174,18 +199,19 @@ class _$ListaModelImpl extends _ListaModel {
 
 abstract class _ListaModel extends ListaModel {
   factory _ListaModel(
-      {required int? cod,
+      {required String? cod,
       required String? nome,
       required String? textAux,
-      required List<String>? itens}) = _$ListaModelImpl;
+      required DateTime? dataHora,
+      required List<ListaItemModel>? itens}) = _$ListaModelImpl;
   _ListaModel._() : super._();
 
   factory _ListaModel.fromJson(Map<String, dynamic> json) =
       _$ListaModelImpl.fromJson;
 
   @override
-  int? get cod;
-  set cod(int? value);
+  String? get cod;
+  set cod(String? value);
   @override
   String? get nome;
   set nome(String? value);
@@ -193,8 +219,11 @@ abstract class _ListaModel extends ListaModel {
   String? get textAux;
   set textAux(String? value);
   @override
-  List<String>? get itens;
-  set itens(List<String>? value);
+  DateTime? get dataHora;
+  set dataHora(DateTime? value);
+  @override
+  List<ListaItemModel>? get itens;
+  set itens(List<ListaItemModel>? value);
   @override
   @JsonKey(ignore: true)
   _$$ListaModelImplCopyWith<_$ListaModelImpl> get copyWith =>

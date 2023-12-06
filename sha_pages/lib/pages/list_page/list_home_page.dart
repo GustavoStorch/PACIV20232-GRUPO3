@@ -4,6 +4,7 @@ import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sha_models/models/lista/lista_model.dart';
+import 'package:sha_models/models/lista_item/lista_item_model.dart';
 import 'package:sha_pages/pages/list_page/list_check_page.dart';
 
 class ListHomePage extends StatefulWidget {
@@ -45,19 +46,31 @@ class _ListHomePageState extends State<ListHomePage> {
       QuerySnapshot<Map<String, dynamic>> listasQuerySnapshot =
           await listasCollection.get() as QuerySnapshot<Map<String, dynamic>>;
 
-      listasQuerySnapshot.docs.forEach(
-        (DocumentSnapshot<Map<String, dynamic>> doc) {
-          Map<String, dynamic> data = doc.data()!;
-          listas.add(
-            ListaModel(
-              cod: null,
-              nome: data['nome'] ?? '',
-              itens: (data['itens'] as List?)?.cast<String>(),
-              textAux: (data['itens'] as List?)?.join(', ') ?? '',
-            ),
-          );
-        },
-      );
+      for (DocumentSnapshot<Map<String, dynamic>> doc
+          in listasQuerySnapshot.docs) {
+        Map<String, dynamic> data = doc.data()!;
+        List<ListaItemModel> itens = [];
+
+        if (data['itens'] is List) {
+          for (var item in data['itens'] as List) {
+            if (item is Map<String, dynamic>) {
+              itens.add(ListaItemModel.fromJson(item));
+            } else if (item is String) {
+              itens.add(ListaItemModel(nomeItem: item, checkItem: false));
+            }
+          }
+        }
+
+        listas.add(
+          ListaModel(
+            cod: doc.id,
+            dataHora: DateTime.now(),
+            nome: data['nome'] ?? '',
+            itens: itens,
+            textAux: itens.map((item) => item.nomeItem).join(', '),
+          ),
+        );
+      }
 
       setState(() {});
     } catch (e) {
