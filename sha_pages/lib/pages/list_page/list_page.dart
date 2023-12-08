@@ -107,6 +107,11 @@ class _ListaPageState extends State<ListaPage> {
                         fontSize: 18,
                       ),
                     ),
+                    trailing: IconButton(
+                      icon:
+                          const Icon(Icons.delete, color: Cores.corTextoBranco),
+                      onPressed: () => excluirItem(index),
+                    ),
                   );
                 },
               ),
@@ -115,6 +120,12 @@ class _ListaPageState extends State<ListaPage> {
         ),
       ),
     );
+  }
+
+  void excluirItem(int index) {
+    setState(() {
+      itensLista.removeAt(index);
+    });
   }
 
   void adicionarItem() {

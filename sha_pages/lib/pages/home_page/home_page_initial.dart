@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:sha_compartilhados/cores/cores.dart';
 import 'package:sha_compartilhados/fontes/fontes.dart';
@@ -5,6 +7,8 @@ import 'package:sha_pages/pages/historico/historico_page.dart';
 import 'package:sha_pages/pages/home_page/home_page.dart';
 import 'package:sha_pages/pages/list_page/list_home_page.dart';
 import 'package:sha_pages/pages/list_page/list_page.dart';
+import 'package:sha_pages/pages/musica/music_page.dart';
+import 'package:sha_pages/pages/profile/profile_page.dart';
 
 class HomePageInitial extends StatefulWidget {
   const HomePageInitial({super.key});
@@ -19,16 +23,10 @@ class _HomePageInitialState extends State<HomePageInitial> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text(
-      'Index 1: Listas',
-      style: optionStyle,
-    ),
+    MusicPage(),
     ListHomePage(),
     HistoricoPage(),
-    Text(
-      'Index 3: Histórico',
-      style: optionStyle,
-    ),
+    ProfilePage(),
   ];
 
   final Map<int, String> titles = {

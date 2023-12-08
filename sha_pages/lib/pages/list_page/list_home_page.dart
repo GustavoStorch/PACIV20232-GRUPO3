@@ -92,6 +92,13 @@ class _ListHomePageState extends State<ListHomePage> {
               item.nome!,
               style: Fontes.getMontserrat(cor: Cores.corTextoBranco),
             ),
+            trailing: IconButton(
+              icon: const Icon(
+                Icons.delete,
+                color: Cores.corTextoBranco,
+              ),
+              onPressed: () => excluirLista(item),
+            ),
             subtitle: Text(
               item.textAux!,
               style: Fontes.getMontserrat(cor: Cores.corTextoBranco),
@@ -108,5 +115,17 @@ class _ListHomePageState extends State<ListHomePage> {
         },
       ),
     );
+  }
+
+  void excluirLista(ListaModel lista) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('listas')
+          .doc(lista.cod)
+          .delete();
+      await _carregarListasDoFirebase();
+    } catch (e) {
+      print('Erro ao excluir lista: $e');
+    }
   }
 }
